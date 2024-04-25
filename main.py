@@ -86,15 +86,15 @@ parser.add_argument('--results_dir', default='./results', help='results director
 parser.add_argument('--split_dir', type=str, default=None, 
                     help='manually specify the set of splits to use, ' 
                     +'instead of infering from the task and label_frac argument (default: None)')
-parser.add_argument('--log_data', action='store_true', default=False, help='log data using tensorboard')
+parser.add_argument('--log_data', action='store_true', default=True, help='log data using tensorboard')
 parser.add_argument('--testing', action='store_true', default=False, help='debugging tool')
 parser.add_argument('--early_stopping', action='store_true', default=False, help='enable early stopping')
 parser.add_argument('--opt', type=str, choices = ['adam', 'sgd'], default='adam')
 parser.add_argument('--drop_out', type=float, default=0.25, help='dropout')
 parser.add_argument('--bag_loss', type=str, choices=['svm', 'ce'], default='ce',
                      help='slide-level classification loss function (default: ce)')
-parser.add_argument('--model_type', type=str, choices=['clam_sb', 'clam_mb', 'mil'], default='clam_sb', 
-                    help='type of model (default: clam_sb, clam w/ single attention branch)')
+parser.add_argument('--model_type', type=str, choices=['clam_sb', 'clam_mb', 'mil', 'abmil'], default='abmil', 
+                    help='type of model (default:abmil; clam_sb = clam w/ single attention branch)')
 parser.add_argument('--exp_code', type=str, help='experiment code for saving results')
 parser.add_argument('--weighted_sample', action='store_true', default=False, help='enable weighted sampling')
 parser.add_argument('--model_size', type=str, choices=['small', 'big'], default='small', help='size of model, does not affect mil')
@@ -154,12 +154,12 @@ print('\nLoad Dataset')
 
 if args.task == 'task_1_tumor_vs_normal':
     args.n_classes=2
-    dataset = Generic_MIL_Dataset(csv_path = 'dataset_csv/tumor_vs_normal_dummy_clean.csv',
-                            data_dir= os.path.join(args.data_root_dir, 'tumor_vs_normal_resnet_features'),
+    dataset = Generic_MIL_Dataset(csv_path = 'dataset_csv/camelyon16.csv',
+                            data_dir= os.path.join(args.data_root_dir, 'Camelyon16_patch256_ostu_res50'),
                             shuffle = False, 
                             seed = args.seed, 
                             print_info = True,
-                            label_dict = {'normal_tissue':0, 'tumor_tissue':1},
+                            label_dict = {0:0, 1:1},
                             patient_strat=False,
                             ignore=[])
 

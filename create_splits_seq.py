@@ -1,7 +1,7 @@
 import pdb
 import os
 import pandas as pd
-from datasets.dataset_generic import Generic_WSI_Classification_Dataset, Generic_MIL_Dataset, save_splits
+from dataset_modules.dataset_generic import Generic_WSI_Classification_Dataset, Generic_MIL_Dataset, save_splits
 import argparse
 import numpy as np
 
@@ -22,11 +22,11 @@ args = parser.parse_args()
 
 if args.task == 'task_1_tumor_vs_normal':
     args.n_classes=2
-    dataset = Generic_WSI_Classification_Dataset(csv_path = 'dataset_csv/tumor_vs_normal_dummy_clean.csv',
+    dataset = Generic_WSI_Classification_Dataset(csv_path = 'dataset_csv/camelyon16.csv',
                             shuffle = False, 
                             seed = args.seed, 
                             print_info = True,
-                            label_dict = {'normal_tissue':0, 'tumor_tissue':1},
+                            label_dict = {0:0, 1:1},
                             patient_strat=True,
                             ignore=[])
 

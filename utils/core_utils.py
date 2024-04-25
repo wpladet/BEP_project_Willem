@@ -128,7 +128,7 @@ def train(datasets, cur, args):
                   'n_classes': args.n_classes, 
                   "embed_dim": args.embed_dim}
     
-    if args.model_size is not None and args.model_type != 'mil':
+    if args.model_size is not None and args.model_type != 'mil'and args.model_type != 'abmil':
         model_dict.update({"size_arg": args.model_size})
     
     if args.model_type in ['clam_sb', 'clam_mb']:
