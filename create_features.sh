@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #SBATCH --job-name=feature_extraction_CAM16
-#SBATCH --output=job_logs/fe_job_output_%j.txt
-#SBATCH --partition=mcs.gpu.q
+#SBATCH --output=job_logs/fe_job_output_resnet18_%j.txt
+#SBATCH --partition=tue.gpu.q
 #SBATCH --time=12:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
@@ -15,20 +15,20 @@ source /cm/shared/apps/Anaconda/2021.11/pth3.9/etc/profile.d/conda.sh
 module load CUDA/11.7.0
 
 # Activate conda environment
-conda activate thesis-conda-env6
+conda activate BEP
 
 # Check python version
 which python
 
 # Navigate to project directory
-cd /home/mcs001/20181133/CLAM/
+cd /home/bme001/20202047/CLAM/
 
 # Set CUDA devices
 export CUDA_VISIBLE_DEVICES=0
 
 # Run the python script in background
-python extract_features_fp.py --data_h5_dir ./patches/Camelyon16_patch256_ostu --data_slide_dir /home/tue/shared_data/ml-datasets/CAMELYON16/images --csv_path ./patches/Camelyon16_patch256_ostu/process_list_autogen.csv --feat_dir ./data_feat/Camelyon16_patch256_ostu_res50 --batch_size 512 --slide_ext .tif
-
+#python extract_features_fp.py --model_name resnet18_imagenet --data_h5_dir /home/bme001/20202047/patches/Camelyon16_patch256_ostu --data_slide_dir /home/tue/shared_data/ml-datasets/CAMELYON16/images --csv_path /home/bme001/20202047/patches/Camelyon16_patch256_ostu/process_list_autogen.csv --feat_dir /home/bme001/20202047/data_feat/Camelyon16_patch256_res18_imagenet --batch_size 256 --slide_ext .tif
+python extract_features_fp.py --model_name resnet18 --data_h5_dir /home/bme001/20202047/patches/Camelyon16_patch256_ostu --data_slide_dir /home/tue/shared_data/ml-datasets/CAMELYON16/images --csv_path /home/bme001/20202047/patches/Camelyon16_patch256_ostu/process_list_autogen.csv --feat_dir /home/bme001/20202047/data_feat/Camelyon16_patch256_res18_ssl --batch_size 256 --slide_ext .tif
 # nvidia-smi -a
 # nvidia-smi mig -lgi  # List GPU instances
 

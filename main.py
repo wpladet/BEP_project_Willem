@@ -68,7 +68,7 @@ def main(args):
 parser = argparse.ArgumentParser(description='Configurations for WSI Training')
 parser.add_argument('--data_root_dir', type=str, default=None, 
                     help='data directory')
-parser.add_argument('--embed_dim', type=int, default=1024)
+parser.add_argument('--embed_dim', type=int, default=1024) 
 parser.add_argument('--max_epochs', type=int, default=200,
                     help='maximum number of epochs to train (default: 200)')
 parser.add_argument('--lr', type=float, default=1e-4,
@@ -154,8 +154,9 @@ print('\nLoad Dataset')
 
 if args.task == 'task_1_tumor_vs_normal':
     args.n_classes=2
+    #'Camelyon16_patch256_ostu_res50'
     dataset = Generic_MIL_Dataset(csv_path = 'dataset_csv/camelyon16.csv',
-                            data_dir= os.path.join(args.data_root_dir, 'Camelyon16_patch256_ostu_res50'),
+                            data_dir= os.path.join(args.data_root_dir, 'Camelyon16_patch256_res18_ssl'),
                             shuffle = False, 
                             seed = args.seed, 
                             print_info = True,

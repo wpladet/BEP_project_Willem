@@ -1,8 +1,11 @@
 import os
 from functools import partial
+from models.resnet_custom import resnet50_ssl
+from models.resnet_custom_18 import resnet18
 import timm
 from .timm_wrapper import TimmCNNEncoder
 import torch
+import torchvision.models as models
 from utils.constants import MODEL2CONSTANTS
 from utils.transform_utils import get_eval_transforms
 
@@ -53,7 +56,11 @@ def get_encoder(model_name, target_img_size=224):
         assert HAS_CONCH, 'CONCH is not available'
         from conch.open_clip_custom import create_model_from_pretrained
         model, _ = create_model_from_pretrained("conch_ViT-B-16", CONCH_CKPT_PATH)
-        model.forward = partial(model.encode_image, proj_contrast=False, normalize=False)
+        model.forward = partial(model.encode_image, proj_contrast=False, normalize=False)   
+    elif model_name == 'resnet50_ssl':  # ResNet-50 ssl
+        model = resnet50_ssl(pretrained=True, progress=False, key="BT") 
+    elif model_name == 'resnet18':  # ResNet-18 
+        model = resnet18(pretrained=True) 
     else:
         raise NotImplementedError('model {} not implemented'.format(model_name))
     

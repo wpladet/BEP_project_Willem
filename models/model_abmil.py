@@ -79,7 +79,8 @@ args:
 class ABMIL(nn.Module):
     def __init__(self, gate = True, size_arg = "small", dropout = False, n_classes=2):
         super(ABMIL, self).__init__()
-        self.size_dict = {"small": [1024, 512, 256], "big": [1024, 512, 384]}
+        #self.size_dict = {"small": [1024, 512, 256], "big": [1024, 512, 384]} # for resnet_50
+        self.size_dict = {"small": [512, 256, 128], "big": [512, 1024, 384]} # for resnet_18
         size = self.size_dict[size_arg]
         fc = [nn.Linear(size[0], size[1]), nn.ReLU()]
         if dropout:
@@ -102,6 +103,7 @@ class ABMIL(nn.Module):
         self.classifiers = self.classifiers.to(device)
 
     def forward(self, h, coords= None, attention_only=False):
+        
         A, h = self.attention_net(h)  # NxK   
         A = torch.transpose(A, 1, 0)  # KxN
         if attention_only:

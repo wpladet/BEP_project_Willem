@@ -5,6 +5,7 @@ import os
 from dataset_modules.dataset_generic import save_splits
 from models.model_mil import MIL_fc, MIL_fc_mc
 from models.model_clam import CLAM_MB, CLAM_SB
+from models.model_abmil import ABMIL                                    #NEW
 from sklearn.preprocessing import label_binarize
 from sklearn.metrics import roc_auc_score, roc_curve
 from sklearn.metrics import auc as calc_auc
@@ -152,6 +153,11 @@ def train(datasets, cur, args):
             model = CLAM_MB(**model_dict, instance_loss_fn=instance_loss_fn)
         else:
             raise NotImplementedError
+    
+    elif args.model_type == 'abmil':                                                            #NEW
+        if args.n_classes > 2:                                                                  #NEW
+            raise NotImplementedError("ABMIL currently supports binary classification only.")   #NEW
+        model = ABMIL(gate=True, size_arg="small", dropout=False, n_classes=args.n_classes)     #NEW
     
     else: # args.model_type == 'mil'
         if args.n_classes > 2:

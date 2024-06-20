@@ -14,20 +14,21 @@
 # module load anaconda/2021.11-pth39
 # python --version
 
-# cd /home/mcs001/20181133
+# cd /home/bme001/20202047
 
 # # Activate virtual environment
 # conda init bash
 # echo "bash init done"
-# conda activate thesis-conda-env2
+# conda activate BEP
 # which python
 
 source /cm/shared/apps/Anaconda/2021.11/pth3.9/etc/profile.d/conda.sh
-conda activate thesis-conda-env6
+conda activate BEP
 which python
 # Open WSI-finetuning project
-cd /home/mcs001/20181133/CLAM/
+cd /home/bme001/20202047/CLAM/
+
 
 # hopefull envirenment variables are now set and stuff can be located :)
 # CUDA_VISIBLE_DEVICES=0 python create_patches_fp.py --source /home/tue/shared_data/ml-datasets/CAMELYON16/images --save_dir ./patches0/Camelyon16_patch256_ostu --patch_level 0 --patch_size 256 --step_size 256 --seg --patch --stitch --use_ostu 
-CUDA_VISIBLE_DEVICES=0 python create_patches_fp.py --source /home/tue/shared_data/ml-datasets/CAMELYON16/images --save_dir ./patches/Camelyon16_patch256_ostu --patch_size 256 --step_size 256 --preset bwh_biopsy.csv --seg --patch --stitch
+CUDA_VISIBLE_DEVICES=0 python create_patches_fp.py --source /home/tue/shared_data/ml-datasets/CAMELYON16/images --save_dir /home/bme001/20202047/patches/Camelyon16_patch256_ostu --patch_size 256 --step_size 256 --preset bwh_biopsy.csv --seg --patch --stitch

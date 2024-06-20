@@ -17,5 +17,21 @@ MODEL2CONSTANTS = {
 	{
 		"mean": OPENAI_MEAN,
 		"std": OPENAI_STD
-	}
+	},
+    "resnet18_imagenet": {
+        "mean": IMAGENET_MEAN,
+        "std": IMAGENET_STD
+    },
+    "resnet50_imagenet": {
+        "mean": IMAGENET_MEAN,
+        "std": IMAGENET_STD
+    },
+    "resnet50_ssl": {
+        "mean": IMAGENET_MEAN,
+        "std": IMAGENET_STD
+    },
+    "resnet18": {
+        "mean": IMAGENET_MEAN,
+        "std": IMAGENET_STD
+    }  
 }

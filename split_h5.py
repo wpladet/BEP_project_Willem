@@ -64,7 +64,10 @@ def split_all_h5_files_in_folder(folder_path, output_dir1, output_dir2):
         input_filepath = os.path.join(folder_path, h5_file)
         split_h5_file(input_filepath, output_dir1, output_dir2)
 
-folder_path = '/home/mcs001/20181133/CLAM/data_feat/Camelyon16_patch256_ostu_res50/h5_files_original'
-output_dir1 = '/home/mcs001/20181133/CLAM/data_feat/Camelyon16_patch256_ostu_res50/h5_files'
-output_dir2 = '/home/mcs001/20181133/CLAM/data_feat/Camelyon16_patch256_ostu_res50/coords'
+#folder_path = '/home/mcs001/20181133/CLAM/data_feat/Camelyon16_patch256_ostu_res50/h5_files_original'
+#output_dir1 = '/home/mcs001/20181133/CLAM/data_feat/Camelyon16_patch256_ostu_res50/h5_files'
+#output_dir2 = '/home/mcs001/20181133/CLAM/data_feat/Camelyon16_patch256_ostu_res50/coords'
+folder_path = '/home/bme001/20202047/data_feat/Camelyon16_patch256_res50/h5_files'
+output_dir1 = '/home/bme001/20202047/data_feat/Camelyon16_patch256_res50/h5_files_split'
+output_dir2 = '/home/bme001/20202047/data_feat/Camelyon16_patch256_res50/coords'
 split_all_h5_files_in_folder(folder_path, output_dir1, output_dir2)

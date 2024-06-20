@@ -1,0 +1,7 @@
+/home/bme001/20202047/.conda/envs/thesis-conda-env6/bin/python
+Traceback (most recent call last):
+  File "/home/bme001/20202047/CLAM/create_patches_fp.py", line 2, in <module>
+    from wsi_core.WholeSlideImage import WholeSlideImage
+  File "/home/bme001/20202047/CLAM/wsi_core/WholeSlideImage.py", line 7, in <module>
+    import cv2
+ModuleNotFoundError: No module named 'cv2'
