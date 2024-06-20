@@ -156,7 +156,7 @@ if args.task == 'task_1_tumor_vs_normal':
     args.n_classes=2
     #'Camelyon16_patch256_ostu_res50'
     dataset = Generic_MIL_Dataset(csv_path = 'dataset_csv/camelyon16.csv',
-                            data_dir= os.path.join(args.data_root_dir, 'Camelyon16_patch256_res18_ssl'),
+                            data_dir= os.path.join(args.data_root_dir, 'Camelyon16_patch256_res18'),
                             shuffle = False, 
                             seed = args.seed, 
                             print_info = True,

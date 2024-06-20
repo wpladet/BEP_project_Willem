@@ -364,6 +364,6 @@ class Generic_Split(Generic_MIL_Dataset):
 
 	def __len__(self):
 		return len(self.slide_data)
-		
+
 
 
